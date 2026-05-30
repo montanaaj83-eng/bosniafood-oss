@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!-- NuGet Package Metadata -->
+    <PackageId>BosniaFood</PackageId>
+    <Version>1.0.0</Version>
+    <Title>BosniaFood Package</Title>
+    <Authors>montanaaj83-eng</Authors>
+    <Description>NuGet package for BosniaFood OSS - A food delivery platform for ordering Bosnian cuisine</Description>
+    <PackageProjectUrl>https://github.com/montanaaj83-eng/bosniafood-oss</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/montanaaj83-eng/bosniafood-oss</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>food;delivery;bosnian;cuisine;ordering</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Supabase" Version="0.7.0" />
+  </ItemGroup>
+
+</Project>
