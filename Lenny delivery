@@ -1,0 +1,56 @@
+bosniafood-os/
+├── app/
+│   ├── page.tsx
+│   ├── dashboard/page.tsx
+│   ├── layout.tsx
+├── lib/
+│   └── supabase.ts
+├── package.json
+├── .env.exampleexport default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html>
+      <body style={{ fontFamily: "Arial", margin: 0 }}>{children}</body>
+    </html>
+  );
+}export default function Home() {
+  return (
+    <main style={{ padding: 40 }}>
+      <h1>🍽 BosniaFood OS</h1>
+      <p>Order food instantly</p>
+
+      <form action="/api/order" method="POST">
+        <input name="food" placeholder="Food" style={{ display: "block", margin: 10 }} />
+        <input name="address" placeholder="Address" style={{ display: "block", margin: 10 }} />
+        <button type="submit">Place Order</button>
+      </form>
+    </main>
+  );
+}import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+export default async function Dashboard() {
+  const { data } = await supabase.from("orders").select("*");
+
+  return (
+    <main style={{ padding: 40 }}>
+      <h1>📦 Live Orders</h1>
+
+      {data?.map((o: any) => (
+        <div key={o.id} style={{ border: "1px solid #ccc", margin: 10, padding: 10 }}>
+          <p>🍔 {o.food}</p>
+          <p>📍 {o.address}</p>
+          <p>🚦 {o.status}</p>
+        </div>
+      ))}
+    </main>NEXT_PUBLIC_SUPABASE_URL=your_url_here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key_here
+  );
+}
